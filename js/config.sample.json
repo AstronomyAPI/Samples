@@ -1,0 +1,5 @@
+{
+    "api_endpoint": "http://api.astronomyapi.org",
+    "app_id": "your app id",
+    "app_secret": "your app secret"
+}

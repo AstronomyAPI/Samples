@@ -1,19 +1,19 @@
 <template>
-   <table border="1">
+    <table border="1" v-if="data">
         <tr>
             <th></th>
-            <th v-for="date in data.dates.list">{{ date }}</th>
+            <th v-for="date in data.table.header">{{ date }}</th>
         </tr>
-        <tr v-for="row in data.rows">
+        <tr v-for="row in data.table.rows">
             <td>
-                {{ row.columns[0].name }}
+                {{ row.entry.name }}
             </td>
-            <td v-for="column in row.columns">
-                RA {{ column.pos.radec.ra.str }}</br>
-                Dec {{ column.pos.radec.dec.str }}
+            <td v-for="cell in row.cells">
+                RA {{ cell.position.ra_dec.ra.str }}</br>
+                Dec {{ cell.position.ra_dec.dec.str }}
             </td>
         </tr>
-   </table>
+    </table>
 </template>
 
 <script>
@@ -23,10 +23,10 @@ import mixins from './mixins.js';
 console.log(mixins);
 
 export default {
-    mixins:[mixins],
+    mixins: [mixins],
     data() {
         return {
-            data:null
+            data: null
         }
     },
     methods: {
@@ -34,6 +34,7 @@ export default {
     },
     mounted() {
         this._callApi().then(response => {
+            console.log(response)
             this.data = response.data.data;
         })
     }

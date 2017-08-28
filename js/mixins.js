@@ -24,23 +24,14 @@ export default {
                 })
             })
         },
-        _callApi() {
+        _callApi(endpoint, params) {
 
             const ajaxPromise = (token) => {
 
                 return new Promise((resolve, reject) => {
 
-                    axios.get(`${Config.api_endpoint}/positions`, {
-                        params: {
-                            lon: '-84.39733',
-                            lat: '33.775867',
-                            from_year: '2016',
-                            from_month: '12',
-                            from_day: '20',
-                            to_year: '2016',
-                            to_month: '12',
-                            to_day: '22'
-                        },
+                    axios.get(`${Config.api_endpoint}${endpoint}`, {
+                        params: params,
                         headers: {
                             'X-Requested-With': 'XMLHttpRequest',
                             'Authorization': `Bearer ${token}`

@@ -1,7 +1,5 @@
 <template>
-    <ul>
-        <li><router-link to="/positions_table">Positions Table</router-link></li>
-    </ul>
+    <router-link to="/">Samples</router-link>
 </template>
 
 <script>

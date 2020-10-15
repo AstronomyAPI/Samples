@@ -1,21 +1,13 @@
 <template>
-    <router-link to="/">Samples</router-link>
+  <router-link to="/">Samples</router-link>
 </template>
 
 <script>
-
-export default {
+  export default {
     data() {
-
-        return {
-           
-        }
+      return {};
     },
-    methods: {
-        
-    },
-    mounted() {
-
-    }
-}
+    methods: {},
+    mounted() {},
+  };
 </script>

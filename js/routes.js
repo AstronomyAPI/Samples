@@ -1,5 +1,6 @@
 import App from "./App.vue";
 import Positions from "./components/Positions.vue";
+import StarChart from "./components/StarChart.vue";
 
 export default [
   {
@@ -9,5 +10,9 @@ export default [
   {
     path: "/positions",
     component: Positions,
+  },
+  {
+    path: "/star-chart",
+    component: StarChart,
   },
 ];

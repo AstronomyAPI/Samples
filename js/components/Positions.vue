@@ -11,15 +11,15 @@
         <form>
           <fieldset>
             <label>Longitude</label>
-            <input @change="get_data" v-model="longitude" type="text" />
+            <input @change="getDate" v-model="longitude" type="text" />
             <label>Latitude</label>
-            <input @change="get_data" v-model="latitude" type="text" />
+            <input @change="getDate" v-model="latitude" type="text" />
             <label>From Date</label>
-            <input @change="get_data" v-model="fromDate" type="date" />
+            <input @change="getDate" v-model="fromDate" type="date" />
             <label>To Date</label>
-            <input @change="get_data" v-model="toDate" type="date" />
+            <input @change="getDate" v-model="toDate" type="date" />
             <label>Time</label>
-            <input @change="get_data" v-model="time" type="time" />
+            <input @change="getDate" v-model="time" type="time" />
             <label>Coordinates</label>
             <input
               v-model="coordinates"
@@ -71,11 +71,10 @@
 </template>
 
 <script>
-  import mixins from "../mixins.js";
   import GoBack from "./Goback.vue";
+  import Config from "../config.json";
 
   export default {
-    mixins: [mixins],
     components: {
       GoBack: GoBack,
     },
@@ -93,25 +92,36 @@
       };
     },
     methods: {
-      get_data() {
+      getDate() {
         this.loading = true;
+        console.log(Config.apiEndpoint);
 
-        this._callApi("/api/v2/bodies/positions", {
-          longitude: this.longitude,
-          latitude: this.latitude,
-          elevation: this.elevation,
-          from_date: moment(this.fromDate).format("YYYY-MM-DD"),
-          to_date: moment(this.toDate).format("YYYY-MM-DD"),
-          time: moment(this.time, "HH:mm:ss").format("HH:mm:ss"),
-        }).then((response) => {
-          this.data = response.data.data;
+        axios
+          .get(`${Config.apiEndpoint}/api/v2/bodies/positions`, {
+            params: {
+              longitude: this.longitude,
+              latitude: this.latitude,
+              elevation: this.elevation,
+              from_date: moment(this.fromDate).format("YYYY-MM-DD"),
+              to_date: moment(this.toDate).format("YYYY-MM-DD"),
+              time: moment(this.time, "HH:mm:ss").format("HH:mm:ss"),
+            },
+            headers: {
+              "X-Requested-With": "XMLHttpRequest",
+              Authorization: `Basic ${btoa(
+                `${Config.appId}:${Config.appSecret}`
+              )}`,
+            },
+          })
+          .then((response) => {
+            this.data = response.data.data;
 
-          this.loading = false;
-        });
+            this.loading = false;
+          });
       },
     },
     mounted() {
-      this.get_data();
+      this.getDate();
     },
   };
 </script>

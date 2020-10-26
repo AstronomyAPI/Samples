@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/">Samples</router-link>
+  <router-link to="/">Back to main page</router-link>
 </template>
 
 <script>

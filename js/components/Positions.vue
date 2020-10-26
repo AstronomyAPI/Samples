@@ -3,6 +3,11 @@
     <div class="row">
       <div class="column column-25">
         <GoBack></GoBack>
+        <h3>Planetary Positions</h3>
+        <p>
+          This demo page utilizes the `/api/v2/bodies/positions` endpoint to
+          fetch and show data in a table.
+        </p>
         <form>
           <fieldset>
             <label>Longitude</label>

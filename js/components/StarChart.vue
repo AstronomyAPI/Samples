@@ -47,7 +47,7 @@
       </div>
       <div class="column column-75">
         <span v-if="loading">{{ status }}</span>
-        <span v-if="pngUrl"><img :src="pngUrl"/></span>
+        <span v-if="imageUrl"><img :src="imageUrl"/></span>
       </div>
     </div>
   </div>
@@ -169,7 +169,7 @@
         dec: 0,
         zoom: 6,
         style: "inverted",
-        pngUrl: null,
+        imageUrl: null,
         loading: true,
         status: 'Click the "Generate" button to load the image',
       };
@@ -220,7 +220,7 @@
             }
           )
           .then((response) => {
-            this.pngUrl = response.data.data.pngUrl;
+            this.imageUrl = response.data.data.imageUrl;
 
             this.loading = false;
           });

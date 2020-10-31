@@ -53,15 +53,21 @@
               v-if="coordinates == 'equatorial'"
             >
               RA {{ cell.position.equatorial.rightAscension.string }}<br />
-              Dec {{ cell.position.equatorial.declination.string }}
+              Dec
+              {{
+                decodeURIComponent(cell.position.equatorial.declination.string)
+              }}
             </td>
             <td
               :key="ci"
               v-for="(cell, ci) in row.cells"
               v-if="coordinates == 'horizonal'"
             >
-              Alt {{ cell.position.horizonal.altitude.string }}<br />
-              Az {{ cell.position.horizonal.azimuth.string }}
+              Alt
+              {{ decodeURIComponent(cell.position.horizonal.altitude.string)
+              }}<br />
+              Az
+              {{ decodeURIComponent(cell.position.horizonal.azimuth.string) }}
             </td>
           </tr>
         </table>

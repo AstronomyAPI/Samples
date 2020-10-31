@@ -68,9 +68,9 @@
         style: {
           moonStyle: "default",
           backgroundStyle: "stars",
-          backgroundColor: "#000",
-          headingColor: "#fff",
-          textColor: "#fff",
+          backgroundColor: "#000000",
+          headingColor: "#ffffff",
+          textColor: "#ffffff",
         },
         longitude: "-84.39733",
         latitude: "33.775867",

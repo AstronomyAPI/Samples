@@ -16,6 +16,12 @@
             <input v-model="latitude" type="text" />
             <label>Date</label>
             <input v-model="date" type="date" />
+            <label>View Type</label>
+            <select v-model="viewType">
+              <option :value="key" v-for="(name, key) in viewTypes">{{
+                name
+              }}</option></select
+            >
             <label>Moon Style</label>
             <select v-model="style.moonStyle">
               <option :value="key" v-for="(name, key) in moonStyles">{{
@@ -65,6 +71,10 @@
           stars: "Stars",
           solid: "Solid",
         },
+        viewTypes: {
+          "portrait-simple": "Portrait Simple",
+          "landscape-simple": "Landscape Simple",
+        },
         style: {
           moonStyle: "default",
           backgroundStyle: "stars",
@@ -75,7 +85,7 @@
         longitude: "-84.39733",
         latitude: "33.775867",
         date: moment().format("YYYY-MM-DD"),
-        type: "constellation",
+        viewType: "portrait-simple",
         imageUrl: null,
         loading: true,
         status: 'Click the "Generate" button to load the image',
@@ -99,7 +109,7 @@
                 date: moment(this.date).format("YYYY-MM-DD"),
               },
               view: {
-                type: this.type,
+                type: this.viewType,
                 parameters,
               },
             },

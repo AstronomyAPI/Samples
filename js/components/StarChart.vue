@@ -20,9 +20,8 @@
             <select v-model="style">
               <option :value="key" v-for="(name, key) in styles">{{
                 name
-              }}</option
-              ><option> </option
-            ></select>
+              }}</option></select
+            >
             <label>Type</label>
             <select v-model="type">
               <option value="area">Area</option>
@@ -32,9 +31,8 @@
             <select v-model="constellation" v-if="type == 'constellation'">
               <option :value="key" v-for="(name, key) in constellations">{{
                 name
-              }}</option
-              ><option> </option
-            ></select>
+              }}</option>
+            </select>
             <label v-if="type == 'area'">Right Ascension</label>
             <input v-if="type == 'area'" v-model="ra" type="number" />
             <label v-if="type == 'area'">Declination</label>
@@ -46,8 +44,8 @@
         </form>
       </div>
       <div class="column column-75">
-        <span v-if="loading">{{ status }}</span>
-        <span v-if="imageUrl"><img :src="imageUrl"/></span>
+        <div v-if="loading">{{ status }}</div>
+        <div v-if="imageUrl"><img :src="imageUrl" /></div>
       </div>
     </div>
   </div>

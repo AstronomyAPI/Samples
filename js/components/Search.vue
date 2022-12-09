@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import GoBack from "./Goback.vue";
+import GoBack from "./GoBack.vue";
 import Config from "../config.json";
 
 export default {

@@ -11,15 +11,15 @@
         <form>
           <fieldset>
             <label>Longitude</label>
-            <input @change="getDate" v-model="longitude" type="text" />
+            <input @change="getData" v-model="longitude" type="text" />
             <label>Latitude</label>
-            <input @change="getDate" v-model="latitude" type="text" />
+            <input @change="getData" v-model="latitude" type="text" />
             <label>From Date</label>
-            <input @change="getDate" v-model="fromDate" type="date" />
+            <input @change="getData" v-model="fromDate" type="date" />
             <label>To Date</label>
-            <input @change="getDate" v-model="toDate" type="date" />
+            <input @change="getData" v-model="toDate" type="date" />
             <label>Time</label>
-            <input @change="getDate" v-model="time" type="time" />
+            <input @change="getData" v-model="time" type="time" />
             <label>Coordinates</label>
             <input v-model="coordinates" value="equatorial" type="radio" />Equatorial
             <input v-model="coordinates" value="horizonal" type="radio" />Horizonal
@@ -82,7 +82,7 @@ export default {
     };
   },
   methods: {
-    getDate() {
+    getData() {
       this.loading = true;
       console.log(Config.apiEndpoint);
 
@@ -111,7 +111,7 @@ export default {
     },
   },
   mounted() {
-    this.getDate();
+    this.getData();
   },
 };
 </script>

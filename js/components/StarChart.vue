@@ -52,9 +52,8 @@
 </template>
 
 <script>
-import GoBack from "./Goback.vue";
+import GoBack from "./GoBack.vue";
 import Config from "../config.json";
-import { parse } from "path";
 
 export default {
   components: {

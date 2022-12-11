@@ -28,6 +28,7 @@ jobs:
         yarn build
 
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
 

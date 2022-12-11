@@ -54,7 +54,7 @@
 
 <script>
 import GoBack from "./GoBack.vue";
-import Config from "../config";
+import { store } from '../store.js'
 
 export default {
   components: {
@@ -100,7 +100,7 @@ export default {
 
       axios
         .post(
-          `${Config.apiEndpoint}/api/v2/studio/moon-phase`,
+          `${store.apiEndpoint}/api/v2/studio/moon-phase`,
           {
             style: this.style,
             observer: {
@@ -117,7 +117,7 @@ export default {
             headers: {
               "X-Requested-With": "XMLHttpRequest",
               Authorization: `Basic ${btoa(
-                `${Config.appId}:${Config.appSecret}`
+                `${store.appId}:${store.appSecret}`
               )}`,
             },
           }

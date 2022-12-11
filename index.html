@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Astronomy API</title>
-    <meta
-      itemprop="description"
-      content="An API for astronomical data retrival and processing for developers. With the API developers can fetch almanac data, astronomical data for planets, stars and satellites."
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css"
-    />
-    <script
-    src="https://maps.googleapis.com/maps/api/js?libraries=places"
-    async
-    defer
-  ></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.8/vue.common.dev.js" integrity="sha512-1TRlgMd66nquj2y/vt6/A3r0rSyC5/lq799RCazhrmM1XoHcDMM1Dm+DRjg0DriXczu9Qz1/gUxffw6SNMBSAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.0/vue-router.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js"></script>
-  </head>
 
-  <body>
-    <div id="app">
-      <router-view></router-view>
-    </div>
-   
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Astronomy API</title>
+  <meta itemprop="description"
+    content="An API for astronomical data retrival and processing for developers. With the API developers can fetch almanac data, astronomical data for planets, stars and satellites." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css" />
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places" async defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.8/vue.common.dev.js"
+    integrity="sha512-1TRlgMd66nquj2y/vt6/A3r0rSyC5/lq799RCazhrmM1XoHcDMM1Dm+DRjg0DriXczu9Qz1/gUxffw6SNMBSAg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.0/vue-router.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js"></script>
+  <style>
+    a {
+      color: #d49254;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <router-view></router-view>
+  </div>
+
+</body>
+
 </html>

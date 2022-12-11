@@ -47,7 +47,7 @@
 
 <script>
 import GoBack from "./GoBack.vue";
-import Config from "../config.json";
+import { store } from '../store.js'
 
 export default {
     components: {
@@ -65,10 +65,9 @@ export default {
     methods: {
         getData() {
             this.loading = true;
-            console.log(Config.apiEndpoint);
 
             axios
-                .get(`${Config.apiEndpoint}/api/v2/search`, {
+                .get(`${store.apiEndpoint}/api/v2/search`, {
                     params: {
                         term: this.term,
                         ra: this.ra,
@@ -78,7 +77,7 @@ export default {
                     headers: {
                         "X-Requested-With": "XMLHttpRequest",
                         Authorization: `Basic ${btoa(
-                            `${Config.appId}:${Config.appSecret}`
+                            `${store.appId}:${store.appSecret}`
                         )}`,
                     },
                 })

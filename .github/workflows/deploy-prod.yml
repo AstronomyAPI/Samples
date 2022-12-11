@@ -27,12 +27,22 @@ jobs:
         npm install
         yarn build
 
+    - uses: actions/upload-artifact@master
+      with:
+        name: buid-artifact
+        path: dist        
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
 
     - uses: actions/checkout@master
+
+    - uses: actions/download-artifact@master
+      with:
+        name: buid-artifact
+        path: dist    
 
     - uses: jakejarvis/s3-sync-action@master
 

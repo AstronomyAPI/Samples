@@ -47,7 +47,7 @@
 
 <script>
 import GoBack from "./GoBack.vue";
-import Config from "../config.json";
+import Config from "../config";
 
 export default {
     components: {

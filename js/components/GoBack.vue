@@ -3,11 +3,16 @@
 </template>
 
 <script>
+import mixins from '../mixins.js'
+
 export default {
+  mixins: [mixins],
   data() {
     return {};
   },
   methods: {},
-  mounted() { },
+  mounted() {
+    this.checkAuth()
+  },
 };
 </script>

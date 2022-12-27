@@ -19,20 +19,20 @@
             <label>View Type</label>
             <select v-model="viewType">
               <option :value="key" v-for="(name, key) in viewTypes">{{
-                  name
-              }}</option>
+    name
+}}</option>
             </select>
             <label>Moon Style</label>
             <select v-model="style.moonStyle">
               <option :value="key" v-for="(name, key) in moonStyles">{{
-                  name
-              }}</option>
+    name
+}}</option>
             </select>
             <label>Background Style</label>
             <select v-model="style.backgroundStyle">
               <option :value="key" v-for="(name, key) in backgroundStyles">{{
-                  name
-              }}</option>
+    name
+}}</option>
             </select>
             <label>Background Color</label>
             <input type="color" v-model="style.backgroundColor" />

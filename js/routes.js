@@ -6,6 +6,7 @@ import Search from "./components/Search.vue";
 
 export default [
   {
+    name:'home',
     path: "/",
     component: App,
   },

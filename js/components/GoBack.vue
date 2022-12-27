@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import mixins from '../mixins.js'
+import mixins from "../mixins.js";
 
 export default {
   mixins: [mixins],
@@ -12,7 +12,7 @@ export default {
   },
   methods: {},
   mounted() {
-    this.checkAuth()
-  },
+    this.checkAuth();
+  }
 };
 </script>

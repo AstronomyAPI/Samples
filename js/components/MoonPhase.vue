@@ -19,20 +19,20 @@
             <label>View Type</label>
             <select v-model="viewType">
               <option :value="key" v-for="(name, key) in viewTypes">{{
-    name
-}}</option>
+                name
+              }}</option>
             </select>
             <label>Moon Style</label>
             <select v-model="style.moonStyle">
               <option :value="key" v-for="(name, key) in moonStyles">{{
-    name
-}}</option>
+                name
+              }}</option>
             </select>
             <label>Background Style</label>
             <select v-model="style.backgroundStyle">
               <option :value="key" v-for="(name, key) in backgroundStyles">{{
-    name
-}}</option>
+                name
+              }}</option>
             </select>
             <label>Background Color</label>
             <input type="color" v-model="style.backgroundColor" />
@@ -54,33 +54,33 @@
 
 <script>
 import GoBack from "./GoBack.vue";
-import { store } from '../store.js'
+import { store } from "../store.js";
 
 export default {
   components: {
-    GoBack: GoBack,
+    GoBack: GoBack
   },
   data() {
     return {
       moonStyles: {
         default: "Default",
         sketch: "Sketch",
-        shaded: "Shaded",
+        shaded: "Shaded"
       },
       backgroundStyles: {
         stars: "Stars",
-        solid: "Solid",
+        solid: "Solid"
       },
       viewTypes: {
         "portrait-simple": "Portrait Simple",
-        "landscape-simple": "Landscape Simple",
+        "landscape-simple": "Landscape Simple"
       },
       style: {
         moonStyle: "default",
         backgroundStyle: "stars",
         backgroundColor: "#000000",
         headingColor: "#ffffff",
-        textColor: "#ffffff",
+        textColor: "#ffffff"
       },
       longitude: "-84.39733",
       latitude: "33.775867",
@@ -88,7 +88,7 @@ export default {
       viewType: "portrait-simple",
       imageUrl: null,
       loading: true,
-      status: 'Click the "Generate" button to load the image',
+      status: 'Click the "Generate" button to load the image'
     };
   },
   methods: {
@@ -106,28 +106,28 @@ export default {
             observer: {
               latitude: parseFloat(this.latitude),
               longitude: parseFloat(this.longitude),
-              date: moment(this.date).format("YYYY-MM-DD"),
+              date: moment(this.date).format("YYYY-MM-DD")
             },
             view: {
               type: this.viewType,
-              parameters,
-            },
+              parameters
+            }
           },
           {
             headers: {
               "X-Requested-With": "XMLHttpRequest",
               Authorization: `Basic ${btoa(
                 `${store.appId}:${store.appSecret}`
-              )}`,
-            },
+              )}`
+            }
           }
         )
-        .then((response) => {
+        .then(response => {
           this.imageUrl = response.data.data.imageUrl;
 
           this.loading = false;
         });
-    },
-  },
+    }
+  }
 };
 </script>

@@ -19,7 +19,7 @@
             <label>Style</label>
             <select v-model="style">
               <option :value="key" v-for="(name, key) in styles">{{
-                  name
+                name
               }}</option>
             </select>
             <label>Type</label>
@@ -30,7 +30,7 @@
             <label v-if="type == 'constellation'">Constellation</label>
             <select v-model="constellation" v-if="type == 'constellation'">
               <option :value="key" v-for="(name, key) in constellations">{{
-                  name
+                name
               }}</option>
             </select>
             <label v-if="type == 'area'">Right Ascension</label>
@@ -53,11 +53,11 @@
 
 <script>
 import GoBack from "./GoBack.vue";
-import { store } from '../store.js'
+import { store } from "../store.js";
 
 export default {
   components: {
-    GoBack: GoBack,
+    GoBack: GoBack
   },
   data() {
     return {
@@ -150,13 +150,13 @@ export default {
         vel: "Vela",
         vir: "Virgo",
         vol: "Volans",
-        Vul: "Vulpecula",
+        Vul: "Vulpecula"
       },
       styles: {
         default: "Default",
         inverted: "Inverted",
         navy: "Navy",
-        red: "Red",
+        red: "Red"
       },
       longitude: "-84.39733",
       latitude: "33.775867",
@@ -169,7 +169,7 @@ export default {
       style: "inverted",
       imageUrl: null,
       loading: true,
-      status: 'Click the "Generate" button to load the image',
+      status: 'Click the "Generate" button to load the image'
     };
   },
   methods: {
@@ -187,8 +187,8 @@ export default {
         parameters["position"] = {
           equatorial: {
             rightAscension: this.ra,
-            declination: this.dec,
-          },
+            declination: this.dec
+          }
         };
         parameters["zoom"] = this.zoom;
       }
@@ -201,28 +201,28 @@ export default {
             observer: {
               latitude: parseFloat(this.latitude),
               longitude: parseFloat(this.longitude),
-              date: moment(this.date).format("YYYY-MM-DD"),
+              date: moment(this.date).format("YYYY-MM-DD")
             },
             view: {
               type: this.type,
-              parameters,
-            },
+              parameters
+            }
           },
           {
             headers: {
               "X-Requested-With": "XMLHttpRequest",
               Authorization: `Basic ${btoa(
                 `${store.appId}:${store.appSecret}`
-              )}`,
-            },
+              )}`
+            }
           }
         )
-        .then((response) => {
+        .then(response => {
           this.imageUrl = response.data.data.imageUrl;
 
           this.loading = false;
         });
-    },
-  },
+    }
+  }
 };
 </script>

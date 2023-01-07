@@ -23,7 +23,7 @@
       <div class="column column-75">
         <span v-if="loading">Loading...</span>
 
-        <table>
+        <table v-if="!loading">
           <tr>
             <th>Name</th>
             <th>Type</th>

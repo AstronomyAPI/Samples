@@ -4,7 +4,7 @@ export default {
   methods: {
     checkAuth() {
       console.log("checkAuth");
-      if (!store.appId || !store.appSecret) {
+      if (!store.credentialsValid) {
         console.log("redirect");
         this.$router.replace({ name: "home" });
       }

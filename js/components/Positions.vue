@@ -21,16 +21,8 @@
             <label>Time</label>
             <input @change="getData" v-model="time" type="time" />
             <label>Coordinates</label>
-            <input
-              v-model="coordinates"
-              value="equatorial"
-              type="radio"
-            />Equatorial
-            <input
-              v-model="coordinates"
-              value="horizonal"
-              type="radio"
-            />Horizonal
+            <input v-model="coordinates" value="equatorial" type="radio" />Equatorial
+            <input v-model="coordinates" value="horizonal" type="radio" />Horizonal
           </fieldset>
         </form>
       </div>
@@ -47,24 +39,17 @@
             <td>
               {{ row.entry.name }}
             </td>
-            <td
-              :key="ci"
-              v-for="(cell, ci) in row.cells"
-              v-if="coordinates == 'equatorial'"
-            >
+            <td :key="ci" v-for="(cell, ci) in row.cells" v-if="coordinates == 'equatorial'">
               RA {{ cell.position.equatorial.rightAscension.string }}<br />
               Dec
               {{
                 decodeURIComponent(cell.position.equatorial.declination.string)
               }}
             </td>
-            <td
-              :key="ci"
-              v-for="(cell, ci) in row.cells"
-              v-if="coordinates == 'horizonal'"
-            >
+            <td :key="ci" v-for="(cell, ci) in row.cells" v-if="coordinates == 'horizonal'">
               Alt
-              {{ decodeURIComponent(cell.position.horizonal.altitude.string)
+              {{
+                decodeURIComponent(cell.position.horizonal.altitude.string)
               }}<br />
               Az
               {{ decodeURIComponent(cell.position.horizonal.azimuth.string) }}
@@ -73,16 +58,21 @@
         </table>
       </div>
     </div>
+    <CodeView></CodeView>
   </div>
 </template>
 
 <script>
 import GoBack from "./GoBack.vue";
+import CodeView from "./CodeView.vue";
+import mixins from "../mixins.js";
 import { store } from "../store.js";
 
 export default {
+  mixins: [mixins],
   components: {
-    GoBack: GoBack
+    GoBack: GoBack,
+    CodeView: CodeView
   },
   data() {
     return {
@@ -101,23 +91,28 @@ export default {
     getData() {
       this.loading = true;
 
+      const url = `${store.apiEndpoint}/api/v2/bodies/positions`
+
+      const params = {
+        longitude: this.longitude,
+        latitude: this.latitude,
+        elevation: this.elevation,
+        from_date: moment(this.fromDate).format("YYYY-MM-DD"),
+        to_date: moment(this.toDate).format("YYYY-MM-DD"),
+        time: moment(this.time, "HH:mm:ss").format("HH:mm:ss")
+      }
+
+      const headers = {
+        "X-Requested-With": "XMLHttpRequest",
+        Authorization: `Basic ${btoa(`${store.appId}:${store.appSecret}`)}`
+      }
+
+      this.setSnippetData('GET', url, params, headers)
+
       axios
-        .get(`${store.apiEndpoint}/api/v2/bodies/positions`, {
-          params: {
-            longitude: this.longitude,
-            latitude: this.latitude,
-            elevation: this.elevation,
-            from_date: moment(this.fromDate).format("YYYY-MM-DD"),
-            to_date: moment(this.toDate).format("YYYY-MM-DD"),
-            time: moment(this.time, "HH:mm:ss").format("HH:mm:ss")
-          },
-          headers: {
-            "X-Requested-With": "XMLHttpRequest",
-            Authorization: `Basic ${btoa(`${store.appId}:${store.appSecret}`)}`
-          }
-        })
-        .then(response => {
+        .get(url, { params, headers }).then(response => {
           this.data = response.data.data;
+          store.response = JSON.stringify(response.data, null, 2);
 
           this.loading = false;
         });

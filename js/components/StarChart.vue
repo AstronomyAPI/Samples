@@ -48,16 +48,21 @@
         <div v-if="imageUrl"><img :src="imageUrl" /></div>
       </div>
     </div>
+    <CodeView></CodeView>
   </div>
 </template>
 
 <script>
 import GoBack from "./GoBack.vue";
+import CodeView from "./CodeView.vue";
+import mixins from "../mixins.js";
 import { store } from "../store.js";
 
 export default {
+  mixins: [mixins],
   components: {
-    GoBack: GoBack
+    GoBack: GoBack,
+    CodeView: CodeView
   },
   data() {
     return {
@@ -193,35 +198,34 @@ export default {
         parameters["zoom"] = this.zoom;
       }
 
-      axios
-        .post(
-          `${store.apiEndpoint}/api/v2/studio/star-chart`,
-          {
-            style: this.style,
-            observer: {
-              latitude: parseFloat(this.latitude),
-              longitude: parseFloat(this.longitude),
-              date: moment(this.date).format("YYYY-MM-DD")
-            },
-            view: {
-              type: this.type,
-              parameters
-            }
-          },
-          {
-            headers: {
-              "X-Requested-With": "XMLHttpRequest",
-              Authorization: `Basic ${btoa(
-                `${store.appId}:${store.appSecret}`
-              )}`
-            }
-          }
-        )
-        .then(response => {
-          this.imageUrl = response.data.data.imageUrl;
+      const url = `${store.apiEndpoint}/api/v2/studio/star-chart`
 
-          this.loading = false;
-        });
+      const params = {
+        style: this.style,
+        observer: {
+          latitude: parseFloat(this.latitude),
+          longitude: parseFloat(this.longitude),
+          date: moment(this.date).format("YYYY-MM-DD")
+        },
+        view: {
+          type: this.type,
+          parameters
+        }
+      }
+
+      const headers = {
+        "X-Requested-With": "XMLHttpRequest",
+        Authorization: `Basic ${btoa(`${store.appId}:${store.appSecret}`)}`
+      }
+
+      this.setSnippetData('POST', url, params, headers)
+
+      axios.post(url, params, { headers }).then(response => {
+        this.imageUrl = response.data.data.imageUrl;
+        store.response = JSON.stringify(response.data, null, 2);
+
+        this.loading = false;
+      });
     }
   }
 };

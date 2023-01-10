@@ -23,7 +23,7 @@
       <div class="column column-75">
         <span v-if="loading">Loading...</span>
 
-        <table>
+        <table v-if="!loading">
           <tr>
             <th>Name</th>
             <th>Type</th>
@@ -34,8 +34,8 @@
           <tr :key="i" v-for="(item, i) in data">
             <td>{{ item.name }}</td>
             <td>{{ item.type.name }}</td>
-            <td>{{ item.subType.name }}</td>
-            <td>{{ item.position.constellation.name }}</td>
+            <td><span v-if="item.subType">{{ item.subType.name }}</span></td>
+            <td><span v-if="item.position.constellation">{{ item.position.constellation.name }}</span></td>
             <td>
               {{ item.position.equatorial.rightAscension.string }}
               {{ item.position.equatorial.declination.string }}
@@ -44,19 +44,25 @@
         </table>
       </div>
     </div>
+    <CodeView></CodeView>
   </div>
 </template>
 
 <script>
 import GoBack from "./GoBack.vue";
+import CodeView from "./CodeView.vue";
+import mixins from "../mixins.js";
 import { store } from "../store.js";
 
 export default {
+  mixins: [mixins],
   components: {
-    GoBack: GoBack
+    GoBack: GoBack,
+    CodeView: CodeView
   },
   data() {
     return {
+      store,
       term: "polaris",
       ra: null,
       dec: null,
@@ -68,24 +74,29 @@ export default {
     getData() {
       this.loading = true;
 
-      axios
-        .get(`${store.apiEndpoint}/api/v2/search`, {
-          params: {
-            term: this.term,
-            ra: this.ra,
-            dec: this.dec,
-            match_type: this.match_type
-          },
-          headers: {
-            "X-Requested-With": "XMLHttpRequest",
-            Authorization: `Basic ${btoa(`${store.appId}:${store.appSecret}`)}`
-          }
-        })
-        .then(response => {
-          this.data = response.data.data;
+      const url = `${store.apiEndpoint}/api/v2/search`
 
-          this.loading = false;
-        });
+      const params = {
+        term: this.term,
+        ra: this.ra,
+        dec: this.dec,
+        match_type: this.match_type
+      }
+
+      const headers = {
+        "X-Requested-With": "XMLHttpRequest",
+        Authorization: `Basic ${btoa(`${store.appId}:${store.appSecret}`)}`
+      }
+
+      this.setSnippetData('GET', url, params, headers)
+
+      axios.get(url, { params, headers }).then(response => {
+
+        this.data = response.data.data;
+        store.response = JSON.stringify(response.data, null, 2);
+
+        this.loading = false;
+      });
     }
   },
   mounted() {

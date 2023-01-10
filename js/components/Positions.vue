@@ -78,7 +78,7 @@ export default {
     return {
       longitude: "-84.39733",
       latitude: "33.775867",
-      elevation: 0,
+      elevation: 1,
       fromDate: moment().format("YYYY-MM-DD"),
       toDate: moment().format("YYYY-MM-DD"),
       time: moment().format("HH:mm:ss"),

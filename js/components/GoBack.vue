@@ -13,6 +13,7 @@ export default {
   methods: {},
   mounted() {
     this.checkAuth();
+    this.resetCodeView();
   }
 };
 </script>

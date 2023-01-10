@@ -4,5 +4,9 @@ export const store = reactive({
   apiEndpoint: "https://api.astronomyapi.com",
   appId: null,
   appSecret: null,
-  credentialsValid: false
+  credentialsValid: false,
+  response: '',
+  request: '',
+  language: 'javascript',
+  snippet: null
 });

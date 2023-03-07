@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
 
     steps:
     - uses: actions/checkout@v3
@@ -23,8 +23,8 @@ jobs:
 
     - name: Build
       run: |
-        npm i yarn
-        npm install
+        npm i -g yarn
+        yarn install
         yarn build
 
     - uses: actions/upload-artifact@master

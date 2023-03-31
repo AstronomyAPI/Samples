@@ -2,7 +2,7 @@
 
 ### Description 
 
-This repository contains various examples code for the API
+This repository contains various example code for the API
 
 ## vue
 

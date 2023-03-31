@@ -22,14 +22,13 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Build
-      working-directory: vue
       run: |
+        cd vue
         npm i -g yarn
         yarn install
         yarn build
 
     - uses: actions/upload-artifact@master
-      working-directory: vue
       with:
         name: buid-artifact
         path: dist        
@@ -42,13 +41,11 @@ jobs:
     - uses: actions/checkout@master
 
     - uses: actions/download-artifact@master
-      working-directory: vue
       with:
         name: buid-artifact
         path: dist    
 
     - uses: jakejarvis/s3-sync-action@master
-      working-directory: vue
       with:
         args: --acl public-read --follow-symlinks --delete
       env:

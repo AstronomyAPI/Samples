@@ -6,8 +6,9 @@ Before you start obtain your `application id` and `application secret` from the 
 
 After your `Basic` key has been generated set it as an environment variable.
 
-``` export BASIC_AUTH_KEY=<hash>
+```export BASIC_AUTH_KEY=<hash>```
+
 
 Run the examples by changing the params.
 
-```` sh generate-moon-phase.sh
+``` sh generate-moon-phase.sh ```

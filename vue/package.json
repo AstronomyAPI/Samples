@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "watch": "node_modules/.bin/webpack-dev-server",
-    "build": "webpack",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider webpack",
     "prettier": "npx prettier --write ./js/**/*"
   },
   "author": "",

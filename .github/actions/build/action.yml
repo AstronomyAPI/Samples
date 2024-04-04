@@ -1,0 +1,27 @@
+name: Build
+description: Build
+
+runs:
+  using: composite
+  steps:
+    - name: Install dependencies
+      shell: bash
+      run: |
+        cd vue
+        yarn install
+        yarn build
+
+    - name: Build
+      run: |
+        if expr "${{ inputs.target }}" : "Dev" >/dev/null; then
+          npm run build;
+        fi   
+        if expr "${{ inputs.target }}" : "Prod" >/dev/null; then
+          npm run build:prod;
+        fi
+      shell: bash
+
+    - uses: actions/upload-artifact@master
+      with:
+        name: buid-artifact
+        path: vue/dist

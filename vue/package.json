@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "node_modules/.bin/webpack-dev-server",
+    "watch": "NODE_OPTIONS=--openssl-legacy-provider node_modules/.bin/webpack-dev-server",
     "build": "NODE_OPTIONS=--openssl-legacy-provider webpack",
     "prettier": "npx prettier --write ./js/**/*"
   },

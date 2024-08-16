@@ -12,6 +12,7 @@
                     <option value="java">Java</option>
                     <option value="go">Go</option>
                     <option value="python">Python</option>
+                    <option value="csharp">C#</option>
                 </select>
                 <h6>Request</h6>
                 <pre :style="{ width: requestViewWidth + 'px' }">{{ store.request }}</pre>

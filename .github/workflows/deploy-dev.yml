@@ -11,6 +11,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - run: corepack enable
       - uses: actions/checkout@v4
       - uses: ./.github/actions/build
 

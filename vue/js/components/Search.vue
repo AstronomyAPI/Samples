@@ -34,8 +34,14 @@
           <tr :key="i" v-for="(item, i) in data">
             <td>{{ item.name }}</td>
             <td>{{ item.type.name }}</td>
-            <td><span v-if="item.subType">{{ item.subType.name }}</span></td>
-            <td><span v-if="item.position.constellation">{{ item.position.constellation.name }}</span></td>
+            <td>
+              <span v-if="item.subType">{{ item.subType.name }}</span>
+            </td>
+            <td>
+              <span v-if="item.position.constellation">{{
+                item.position.constellation.name
+              }}</span>
+            </td>
             <td>
               {{ item.position.equatorial.rightAscension.string }}
               {{ item.position.equatorial.declination.string }}
@@ -74,24 +80,23 @@ export default {
     getData() {
       this.loading = true;
 
-      const url = `${store.apiEndpoint}/api/v2/search`
+      const url = `${store.apiEndpoint}/api/v2/search`;
 
       const params = {
         term: this.term,
         ra: this.ra,
         dec: this.dec,
         match_type: this.match_type
-      }
+      };
 
       const headers = {
         "X-Requested-With": "XMLHttpRequest",
         Authorization: `Basic ${btoa(`${store.appId}:${store.appSecret}`)}`
-      }
+      };
 
-      this.setSnippetData('GET', url, params, headers)
+      this.setSnippetData("GET", url, params, headers);
 
       axios.get(url, { params, headers }).then(response => {
-
         this.data = response.data.data;
         store.response = JSON.stringify(response.data, null, 2);
 

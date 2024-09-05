@@ -101,7 +101,7 @@ export default {
       this.loading = true;
       this.status = "Loading...";
 
-      const url = `${store.apiEndpoint}/api/v2/studio/moon-phase`
+      const url = `${store.apiEndpoint}/api/v2/studio/moon-phase`;
 
       const params = {
         style: this.style,
@@ -114,14 +114,14 @@ export default {
           type: this.viewType,
           parameters: {}
         }
-      }
+      };
 
       const headers = {
         "X-Requested-With": "XMLHttpRequest",
         Authorization: `Basic ${btoa(`${store.appId}:${store.appSecret}`)}`
-      }
+      };
 
-      this.setSnippetData('POST', url, params, headers)
+      this.setSnippetData("POST", url, params, headers);
 
       axios.post(url, params, { headers }).then(response => {
         this.imageUrl = response.data.data.imageUrl;

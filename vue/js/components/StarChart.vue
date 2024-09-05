@@ -191,14 +191,14 @@ export default {
       if (this.type == "area") {
         parameters["position"] = {
           equatorial: {
-            rightAscension: this.ra,
-            declination: this.dec
+            rightAscension: parseInt(this.ra),
+            declination: parseInt(this.dec)
           }
         };
-        parameters["zoom"] = this.zoom;
+        parameters["zoom"] = parseInt(this.zoom);
       }
 
-      const url = `${store.apiEndpoint}/api/v2/studio/star-chart`
+      const url = `${store.apiEndpoint}/api/v2/studio/star-chart`;
 
       const params = {
         style: this.style,
@@ -211,14 +211,14 @@ export default {
           type: this.type,
           parameters
         }
-      }
+      };
 
       const headers = {
         "X-Requested-With": "XMLHttpRequest",
         Authorization: `Basic ${btoa(`${store.appId}:${store.appSecret}`)}`
-      }
+      };
 
-      this.setSnippetData('POST', url, params, headers)
+      this.setSnippetData("POST", url, params, headers);
 
       axios.post(url, params, { headers }).then(response => {
         this.imageUrl = response.data.data.imageUrl;

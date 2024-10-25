@@ -34,5 +34,5 @@
     "httpsnippet": "^2.0.0",
     "lodash": "^4.17.13"
   },
-  "packageManager": "yarn@3.6.3+sha256.08ead1821a257416e6f217e89365425bf4b6d2430c3279318bedcec1a245fff5"
+  "packageManager": "yarn@3.8.6+sha512.a1c3a781c248a6d957eacd53f9b965663af89ef777982d7d9086af6de00cab8724cb75bade6b0cdfcaa04f63e20767fc435aade5489be976a5745d6ee03c7932"
 }

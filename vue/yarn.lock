@@ -7085,7 +7085,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^1.7.0":
+"prettier@npm:^1.16.0":
   version: 1.19.1
   resolution: "prettier@npm:1.19.1"
   bin:
@@ -7634,7 +7634,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@npm%3A^1.10.0#~builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.4.0#~builtin<compat/resolve>":
+"resolve@patch:resolve@^1.4.0#~builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.10.0#~builtin<compat/resolve>":
   version: 1.22.1
   resolution: "resolve@patch:resolve@npm%3A1.22.1#~builtin<compat/resolve>::version=1.22.1&hash=c3c19d"
   dependencies:
@@ -9127,27 +9127,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-loader@npm:14.2.2":
-  version: 14.2.2
-  resolution: "vue-loader@npm:14.2.2"
+"vue-loader@npm:14.2.4":
+  version: 14.2.4
+  resolution: "vue-loader@npm:14.2.4"
   dependencies:
-    consolidate: "npm:^0.14.0"
-    hash-sum: "npm:^1.0.2"
-    loader-utils: "npm:^1.1.0"
-    lru-cache: "npm:^4.1.1"
-    postcss: "npm:^6.0.8"
-    postcss-load-config: "npm:^1.1.0"
-    postcss-selector-parser: "npm:^2.0.0"
-    prettier: "npm:^1.7.0"
-    resolve: "npm:^1.4.0"
-    source-map: "npm:^0.6.1"
-    vue-hot-reload-api: "npm:^2.2.0"
-    vue-style-loader: "npm:^4.0.1"
-    vue-template-es2015-compiler: "npm:^1.6.0"
+    consolidate: ^0.14.0
+    hash-sum: ^1.0.2
+    loader-utils: ^1.1.0
+    lru-cache: ^4.1.1
+    postcss: ^6.0.8
+    postcss-load-config: ^1.1.0
+    postcss-selector-parser: ^2.0.0
+    prettier: ^1.16.0
+    resolve: ^1.4.0
+    source-map: ^0.6.1
+    vue-hot-reload-api: ^2.2.0
+    vue-style-loader: ^4.0.1
+    vue-template-es2015-compiler: ^1.6.0
   peerDependencies:
     css-loader: "*"
     vue-template-compiler: ^2.0.0
-  checksum: dc91dbf97df871d16af41af685479ff3a3ef391ac5668442a017479c4adbf4212b14c233b5baa75ace6afece0c772a669b2827bdfaf93434433a1de620dfeb9d
+  checksum: a8f779310bee74d75d861a2d897899f163211cc17e849ae8e33ec3e19130e01908b47d28d2175a60dfeb0e05a750644578597c111793b8e6129dafc036eeeab0
   languageName: node
   linkType: hard
 
@@ -9178,7 +9178,7 @@ __metadata:
     node-sass: ^7.0.0
     tar: ">=4.4.2"
     vue: ^3.0.0
-    vue-loader: 14.2.2
+    vue-loader: 14.2.4
     vue-template-compiler: ^2.6.8
     vue-ts-loader: 0.0.3
     vue-typescript-import-dts: ^3.1.1

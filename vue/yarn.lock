@@ -3,7 +3,7 @@
 
 __metadata:
   version: 8
-  cacheKey: 10
+  cacheKey: 10c0
 
 "@babel/code-frame@npm:^7.0.0":
   version: 7.18.6
@@ -189,10 +189,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^8.10.42":
-  version: 8.10.66
-  resolution: "@types/node@npm:8.10.66"
-  checksum: 10/49a93cbeeca74e247970b5c2130abe8204587b6d3c5ec259543e7511234e5fa340341668155807ade7a86c22dab1ec8ee18c0ac745e4d54679de1b2dabd99363
+"@types/node@npm:^22.0.0":
+  version: 22.8.0
+  resolution: "@types/node@npm:22.8.0"
+  dependencies:
+    undici-types: "npm:~6.19.8"
+  checksum: 10c0/21eb10cee768d32e965d095415a4c6a7752f26bfcc34a8c1d7ab3989a6ab13a51761cc245909570d59c6bdacbdfd055d307dc6b201ac04305c57e65c1e7bf5be
   languageName: node
   linkType: hard
 
@@ -8882,6 +8884,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"undici-types@npm:~6.19.8":
+  version: 6.19.8
+  resolution: "undici-types@npm:6.19.8"
+  checksum: 10c0/078afa5990fba110f6824823ace86073b4638f1d5112ee26e790155f481f2a868cc3e0615505b6f4282bdf74a3d8caad715fd809e870c2bb0704e3ea6082f344
+  languageName: node
+  linkType: hard
+
 "union-value@npm:^1.0.0":
   version: 1.0.1
   resolution: "union-value@npm:1.0.1"
@@ -9165,7 +9174,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "vue-table@workspace:."
   dependencies:
-    "@types/node": "npm:^8.10.42"
+    "@types/node": "npm:^22.0.0"
     babel-core: "npm:^6.26.3"
     babel-loader: "npm:^7.1.5"
     babel-preset-env: "npm:^1.7.0"

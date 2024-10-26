@@ -28,7 +28,7 @@
     "vue-typescript-import-dts": "^3.1.1",
     "webpack": "^4.31.0",
     "webpack-cli": "^3.3.2",
-    "webpack-dev-server": "^3.4.1"
+    "webpack-dev-server": "^5.0.0"
   },
   "dependencies": {
     "httpsnippet": "^2.0.0",

@@ -8804,7 +8804,7 @@ __metadata:
     vue-loader: "npm:17.4.2"
     vue-template-compiler: "npm:^2.6.8"
     vue-ts-loader: "npm:0.0.3"
-    vue-typescript-import-dts: "npm:^3.1.1"
+    vue-typescript-import-dts: "npm:^4.0.0"
     webpack: "npm:^4.31.0"
     webpack-cli: "npm:^3.3.2"
     webpack-dev-server: "npm:^3.4.1"
@@ -8834,10 +8834,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-typescript-import-dts@npm:^3.1.1":
-  version: 3.1.1
-  resolution: "vue-typescript-import-dts@npm:3.1.1"
-  checksum: 10/fbb74117e8a0b26df033a96bf02a9ff93f043b6d5aa0520d8f36f5d62908a3f90078f34ac4a699f5d984dc64b2b9e871c471b05b898064079d0b6419db29c400
+"vue-typescript-import-dts@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "vue-typescript-import-dts@npm:4.0.0"
+  checksum: 10c0/50286413039233c0a88131b5d27bdeaf0e2afa198fbda47fb7f6e9bfb42404c52cdca92674c248efc26de8c4780434a3c33dcb714e1e741a9f9c2d65a509f2b5
   languageName: node
   linkType: hard
 

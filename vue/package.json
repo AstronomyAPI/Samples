@@ -22,7 +22,7 @@
     "node-sass": "^9.0.0",
     "tar": ">=4.4.2",
     "vue": "^3.0.0",
-    "vue-loader": "14.2.4",
+    "vue-loader": "17.4.2",
     "vue-template-compiler": "^2.6.8",
     "vue-ts-loader": "0.0.3",
     "vue-typescript-import-dts": "^3.1.1",

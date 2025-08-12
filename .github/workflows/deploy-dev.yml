@@ -12,14 +12,14 @@ jobs:
         with:
           node-version: 20
       - run: corepack enable
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ./.github/actions/build
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ./.github/actions/deploy
         with:
           aws_account_id: ${{ secrets.AWS_ACCOUNT_ID }}

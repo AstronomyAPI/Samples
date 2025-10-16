@@ -5,7 +5,7 @@ const { VueLoaderPlugin } = require("vue-loader");
 const webpack = require("webpack");
 
 module.exports = {
-  mode: "development", // or "production"
+  mode: "development",
 
   entry: {
     app: "./js/app.js",
@@ -21,6 +21,7 @@ module.exports = {
     extensions: [".js", ".vue"],
     alias: {
       vue$: "vue/dist/vue.esm-bundler.js",
+      axios$: require.resolve('axios/dist/browser/axios.cjs'),
     },
     fallback: {
       stream: require.resolve("stream-browserify"),
@@ -30,9 +31,9 @@ module.exports = {
       process: require.resolve("process/browser"),
       url: require.resolve("url/"),
       querystring: require.resolve("querystring-es3"),
-      http: require.resolve("stream-http"),           // ✅ added
-      https: require.resolve("https-browserify"),     // ✅ added
-      fs: false,                                      // ✅ no browser equivalent
+      http: require.resolve("stream-http"),
+      https: require.resolve("https-browserify"),
+      fs: false,
     },
   },
 

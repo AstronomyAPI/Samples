@@ -1,5 +1,5 @@
 import { store } from "./store.js";
-import HTTPSnippet from "httpsnippet";
+import { HTTPSnippet } from "httpsnippet";
 
 function objectToArray(dataObject) {
   return Object.keys(dataObject)

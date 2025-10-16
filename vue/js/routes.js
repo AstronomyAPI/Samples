@@ -1,14 +1,14 @@
-import App from "./App.vue";
 import Positions from "./components/Positions.vue";
 import StarChart from "./components/StarChart.vue";
 import MoonPhase from "./components/MoonPhase.vue";
 import Search from "./components/Search.vue";
+import Home from "./components/Home.vue";
 
 export default [
   {
     name: "home",
     path: "/",
-    component: App,
+    component: Home,
   },
   {
     path: "/positions",

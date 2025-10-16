@@ -18,21 +18,21 @@
             <input v-model="date" type="date" />
             <label>View Type</label>
             <select v-model="viewType">
-              <option :value="key" v-for="(name, key) in viewTypes">{{
-                name
-              }}</option>
+              <option :value="key" v-for="(name, key) in viewTypes">
+                {{ name }}
+              </option>
             </select>
             <label>Moon Style</label>
             <select v-model="style.moonStyle">
-              <option :value="key" v-for="(name, key) in moonStyles">{{
-                name
-              }}</option>
+              <option :value="key" v-for="(name, key) in moonStyles">
+                {{ name }}
+              </option>
             </select>
             <label>Background Style</label>
             <select v-model="style.backgroundStyle">
-              <option :value="key" v-for="(name, key) in backgroundStyles">{{
-                name
-              }}</option>
+              <option :value="key" v-for="(name, key) in backgroundStyles">
+                {{ name }}
+              </option>
             </select>
             <label>Background Color</label>
             <input type="color" v-model="style.backgroundColor" />
@@ -63,29 +63,29 @@ export default {
   mixins: [mixins],
   components: {
     GoBack: GoBack,
-    CodeView: CodeView
+    CodeView: CodeView,
   },
   data() {
     return {
       moonStyles: {
         default: "Default",
         sketch: "Sketch",
-        shaded: "Shaded"
+        shaded: "Shaded",
       },
       backgroundStyles: {
         stars: "Stars",
-        solid: "Solid"
+        solid: "Solid",
       },
       viewTypes: {
         "portrait-simple": "Portrait Simple",
-        "landscape-simple": "Landscape Simple"
+        "landscape-simple": "Landscape Simple",
       },
       style: {
         moonStyle: "default",
         backgroundStyle: "stars",
         backgroundColor: "#000000",
         headingColor: "#ffffff",
-        textColor: "#ffffff"
+        textColor: "#ffffff",
       },
       longitude: "-84.39733",
       latitude: "33.775867",
@@ -93,7 +93,7 @@ export default {
       viewType: "portrait-simple",
       imageUrl: null,
       loading: true,
-      status: 'Click the "Generate" button to load the image'
+      status: 'Click the "Generate" button to load the image',
     };
   },
   methods: {
@@ -108,28 +108,28 @@ export default {
         observer: {
           latitude: parseFloat(this.latitude),
           longitude: parseFloat(this.longitude),
-          date: moment(this.date).format("YYYY-MM-DD")
+          date: moment(this.date).format("YYYY-MM-DD"),
         },
         view: {
           type: this.viewType,
-          parameters: {}
-        }
+          parameters: {},
+        },
       };
 
       const headers = {
         "X-Requested-With": "XMLHttpRequest",
-        Authorization: `Basic ${btoa(`${store.appId}:${store.appSecret}`)}`
+        Authorization: `Basic ${btoa(`${store.appId}:${store.appSecret}`)}`,
       };
 
       this.setSnippetData("POST", url, params, headers);
 
-      axios.post(url, params, { headers }).then(response => {
+      axios.post(url, params, { headers }).then((response) => {
         this.imageUrl = response.data.data.imageUrl;
         store.response = JSON.stringify(response.data, null, 2);
 
         this.loading = false;
       });
-    }
-  }
+    },
+  },
 };
 </script>

@@ -8,22 +8,22 @@ export default [
   {
     name: "home",
     path: "/",
-    component: App
+    component: App,
   },
   {
     path: "/positions",
-    component: Positions
+    component: Positions,
   },
   {
     path: "/star-chart",
-    component: StarChart
+    component: StarChart,
   },
   {
     path: "/moon-phase",
-    component: MoonPhase
+    component: MoonPhase,
   },
   {
     path: "/search",
-    component: Search
-  }
+    component: Search,
+  },
 ];

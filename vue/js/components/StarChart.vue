@@ -18,9 +18,9 @@
             <input v-model="date" type="date" />
             <label>Style</label>
             <select v-model="style">
-              <option :value="key" v-for="(name, key) in styles">{{
-                name
-              }}</option>
+              <option :value="key" v-for="(name, key) in styles">
+                {{ name }}
+              </option>
             </select>
             <label>Type</label>
             <select v-model="type">
@@ -29,9 +29,9 @@
             </select>
             <label v-if="type == 'constellation'">Constellation</label>
             <select v-model="constellation" v-if="type == 'constellation'">
-              <option :value="key" v-for="(name, key) in constellations">{{
-                name
-              }}</option>
+              <option :value="key" v-for="(name, key) in constellations">
+                {{ name }}
+              </option>
             </select>
             <label v-if="type == 'area'">Right Ascension</label>
             <input v-if="type == 'area'" v-model="ra" type="number" />
@@ -62,7 +62,7 @@ export default {
   mixins: [mixins],
   components: {
     GoBack: GoBack,
-    CodeView: CodeView
+    CodeView: CodeView,
   },
   data() {
     return {
@@ -155,13 +155,13 @@ export default {
         vel: "Vela",
         vir: "Virgo",
         vol: "Volans",
-        Vul: "Vulpecula"
+        Vul: "Vulpecula",
       },
       styles: {
         default: "Default",
         inverted: "Inverted",
         navy: "Navy",
-        red: "Red"
+        red: "Red",
       },
       longitude: "-84.39733",
       latitude: "33.775867",
@@ -174,7 +174,7 @@ export default {
       style: "inverted",
       imageUrl: null,
       loading: true,
-      status: 'Click the "Generate" button to load the image'
+      status: 'Click the "Generate" button to load the image',
     };
   },
   methods: {
@@ -192,8 +192,8 @@ export default {
         parameters["position"] = {
           equatorial: {
             rightAscension: parseInt(this.ra),
-            declination: parseInt(this.dec)
-          }
+            declination: parseInt(this.dec),
+          },
         };
         parameters["zoom"] = parseInt(this.zoom);
       }
@@ -205,28 +205,28 @@ export default {
         observer: {
           latitude: parseFloat(this.latitude),
           longitude: parseFloat(this.longitude),
-          date: moment(this.date).format("YYYY-MM-DD")
+          date: moment(this.date).format("YYYY-MM-DD"),
         },
         view: {
           type: this.type,
-          parameters
-        }
+          parameters,
+        },
       };
 
       const headers = {
         "X-Requested-With": "XMLHttpRequest",
-        Authorization: `Basic ${btoa(`${store.appId}:${store.appSecret}`)}`
+        Authorization: `Basic ${btoa(`${store.appId}:${store.appSecret}`)}`,
       };
 
       this.setSnippetData("POST", url, params, headers);
 
-      axios.post(url, params, { headers }).then(response => {
+      axios.post(url, params, { headers }).then((response) => {
         this.imageUrl = response.data.data.imageUrl;
         store.response = JSON.stringify(response.data, null, 2);
 
         this.loading = false;
       });
-    }
-  }
+    },
+  },
 };
 </script>

@@ -1,73 +1,90 @@
-var path = require("path");
-var root = path.join.bind(path, path.resolve(__dirname));
-var CopyWebpackPlugin = require("copy-webpack-plugin");
-var CleanWebpackPlugin = require("clean-webpack-plugin");
-var HtmlWebpackPlugin = require("html-webpack-plugin");
-var webpack = require("webpack");
+const path = require("path");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { VueLoaderPlugin } = require("vue-loader");
+const webpack = require("webpack");
 
 module.exports = {
+  mode: "development", // or "production"
+
   entry: {
     app: "./js/app.js",
   },
+
   output: {
-    path: root("dist"),
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].[contenthash].js",
     publicPath: "/",
-    filename: "[name].[hash].js",
-    chunkFilename: "[id].[hash].chunk.js",
   },
+
+  resolve: {
+    extensions: [".js", ".vue"],
+    alias: {
+      vue$: "vue/dist/vue.esm-bundler.js",
+    },
+    fallback: {
+      stream: require.resolve("stream-browserify"),
+      path: require.resolve("path-browserify"),
+      buffer: require.resolve("buffer/"),
+      util: require.resolve("util/"),
+      process: require.resolve("process/browser"),
+      url: require.resolve("url/"),
+      querystring: require.resolve("querystring-es3"),
+      http: require.resolve("stream-http"),           // ✅ added
+      https: require.resolve("https-browserify"),     // ✅ added
+      fs: false,                                      // ✅ no browser equivalent
+    },
+  },
+
   module: {
     rules: [
       {
         test: /\.vue$/,
-        loader: "vue-loader",
+        use: ["vue-loader"],
       },
       {
         test: /\.js$/,
-        exclude: /(node_modules)/,
+        exclude: /node_modules/,
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["env"],
+            presets: ["@babel/preset-env"],
           },
         },
       },
       {
-        test: /\.css$/i,
+        test: /\.css$/,
         use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.html$/,
+        use: ["html-loader"],
       },
     ],
   },
-  devServer: {
-    contentBase: path.join(__dirname, "dist"),
-    compress: true,
-    port: 8080,
-  },
+
   plugins: [
-    new CleanWebpackPlugin(["dist/**/*.*"], {
-      root: __dirname,
-      verbose: true,
-      dry: false,
-    }),
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new CopyWebpackPlugin([
-      {
-        from: "index.html",
-      },
-    ]),
-    new CopyWebpackPlugin([
-      {
-        from: "images/**/*",
-      },
-    ]),
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "index.html",
-      chunksSortMode: "dependency",
       inject: "body",
     }),
-    new webpack.LoaderOptionsPlugin({
-      htmlLoader: {
-        minimize: false,
-      },
+    new VueLoaderPlugin(),
+    new webpack.ProvidePlugin({
+      Buffer: ["buffer", "Buffer"],
+      process: "process/browser",
     }),
   ],
+
+  devServer: {
+    static: {
+      directory: path.join(__dirname, "dist"),
+    },
+    compress: true,
+    port: 9080,
+    hot: true,
+    historyApiFallback: true,
+  },
+
+  stats: "minimal",
 };

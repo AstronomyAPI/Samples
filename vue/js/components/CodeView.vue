@@ -45,7 +45,7 @@ export default {
       expanded: false,
       drawerTitle: "ᐃ Show Console",
       requestViewWidth: 0,
-      responseViewWidth: 0
+      responseViewWidth: 0,
     };
   },
   methods: {
@@ -57,7 +57,7 @@ export default {
     changeWidth() {
       this.requestViewWidth = this.$refs.requestView.clientWidth;
       this.responseViewWidth = this.$refs.responseView.clientWidth - 40;
-    }
+    },
   },
   created() {
     window.addEventListener("resize", this.changeWidth);
@@ -67,6 +67,6 @@ export default {
   },
   mounted() {
     this.changeWidth();
-  }
+  },
 };
 </script>

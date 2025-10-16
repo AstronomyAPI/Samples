@@ -5,8 +5,8 @@ export const store = reactive({
   appId: null,
   appSecret: null,
   credentialsValid: false,
-  response: '',
-  request: '',
-  language: 'javascript',
-  snippet: null
+  response: "",
+  request: "",
+  language: "javascript",
+  snippet: null,
 });

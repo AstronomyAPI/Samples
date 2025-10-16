@@ -14,6 +14,6 @@ export default {
   mounted() {
     this.checkAuth();
     this.resetCodeView();
-  }
+  },
 };
 </script>

@@ -20,33 +20,41 @@
           </fieldset>
         </form>
       </div>
+
       <div class="column column-75">
         <span v-if="loading">Loading...</span>
 
-        <table v-if="!loading">
-          <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Sub Type</th>
-            <th>Constellation</th>
-            <th>Coordinates</th>
-          </tr>
-          <tr :key="i" v-for="(item, i) in data">
-            <td>{{ item.name }}</td>
-            <td>{{ item.type.name }}</td>
-            <td>
-              <span v-if="item.subType">{{ item.subType.name }}</span>
-            </td>
-            <td>
-              <span v-if="item.position.constellation">{{
-                item.position.constellation.name
-              }}</span>
-            </td>
-            <td>
-              {{ item.position.equatorial.rightAscension.string }}
-              {{ item.position.equatorial.declination.string }}
-            </td>
-          </tr>
+        <table v-if="!loading && data">
+          <!-- Table Header -->
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Sub Type</th>
+              <th>Constellation</th>
+              <th>Coordinates</th>
+            </tr>
+          </thead>
+
+          <!-- Table Body -->
+          <tbody>
+            <tr :key="i" v-for="(item, i) in data">
+              <td>{{ item.name }}</td>
+              <td>{{ item.type.name }}</td>
+              <td>
+                <span v-if="item.subType">{{ item.subType.name }}</span>
+              </td>
+              <td>
+                <span v-if="item.position.constellation">{{
+                  item.position.constellation.name
+                }}</span>
+              </td>
+              <td>
+                {{ item.position.equatorial.rightAscension.string }}
+                {{ item.position.equatorial.declination.string }}
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>
@@ -59,12 +67,13 @@ import GoBack from "./GoBack.vue";
 import CodeView from "./CodeView.vue";
 import mixins from "../mixins.js";
 import { store } from "../store.js";
+import axios from "axios";
 
 export default {
   mixins: [mixins],
   components: {
-    GoBack: GoBack,
-    CodeView: CodeView
+    GoBack,
+    CodeView,
   },
   data() {
     return {
@@ -73,7 +82,7 @@ export default {
       ra: null,
       dec: null,
       loading: true,
-      match_type: "fuzzy"
+      match_type: "fuzzy",
     };
   },
   methods: {
@@ -86,26 +95,25 @@ export default {
         term: this.term,
         ra: this.ra,
         dec: this.dec,
-        match_type: this.match_type
+        match_type: this.match_type,
       };
 
       const headers = {
         "X-Requested-With": "XMLHttpRequest",
-        Authorization: `Basic ${btoa(`${store.appId}:${store.appSecret}`)}`
+        Authorization: `Basic ${btoa(`${store.appId}:${store.appSecret}`)}`,
       };
 
       this.setSnippetData("GET", url, params, headers);
 
-      axios.get(url, { params, headers }).then(response => {
+      axios.get(url, { params, headers }).then((response) => {
         this.data = response.data.data;
         store.response = JSON.stringify(response.data, null, 2);
-
         this.loading = false;
       });
-    }
+    },
   },
   mounted() {
     this.getData();
-  }
+  },
 };
 </script>

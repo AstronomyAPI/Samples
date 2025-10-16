@@ -34,42 +34,53 @@
           </fieldset>
         </form>
       </div>
+
       <div class="column column-75">
         <span v-if="loading">Loading...</span>
+
         <table border="1" v-if="data">
-          <tr>
-            <th></th>
-            <th :key="di" v-for="(date, di) in data.table.header">
-              {{ date }}
-            </th>
-          </tr>
-          <tr :key="ri" v-for="(row, ri) in data.table.rows">
-            <td>
-              {{ row.entry.name }}
-            </td>
-            <td
-              :key="ci"
-              v-for="(cell, ci) in row.cells"
-              v-if="coordinates == 'equatorial'"
-            >
-              RA {{ cell.position.equatorial.rightAscension.string }}<br />
-              Dec
-              {{
-                decodeURIComponent(cell.position.equatorial.declination.string)
-              }}
-            </td>
-            <td
-              :key="ci"
-              v-for="(cell, ci) in row.cells"
-              v-if="coordinates == 'horizonal'"
-            >
-              Alt
-              {{ decodeURIComponent(cell.position.horizonal.altitude.string)
-              }}<br />
-              Az
-              {{ decodeURIComponent(cell.position.horizonal.azimuth.string) }}
-            </td>
-          </tr>
+          <!-- Table Header -->
+          <thead>
+            <tr>
+              <th></th>
+              <th :key="di" v-for="(date, di) in data.table.header">
+                {{ date }}
+              </th>
+            </tr>
+          </thead>
+
+          <!-- Table Body -->
+          <tbody>
+            <tr :key="ri" v-for="(row, ri) in data.table.rows">
+              <td>{{ row.entry.name }}</td>
+
+              <td
+                v-for="(cell, ci) in row.cells"
+                :key="'equatorial-' + ci"
+                v-if="coordinates === 'equatorial'"
+              >
+                RA {{ cell.position.equatorial.rightAscension.string }}<br />
+                Dec
+                {{
+                  decodeURIComponent(
+                    cell.position.equatorial.declination.string,
+                  )
+                }}
+              </td>
+
+              <td
+                v-for="(cell, ci) in row.cells"
+                :key="'horizonal-' + ci"
+                v-if="coordinates === 'horizonal'"
+              >
+                Alt
+                {{ decodeURIComponent(cell.position.horizonal.altitude.string)
+                }}<br />
+                Az
+                {{ decodeURIComponent(cell.position.horizonal.azimuth.string) }}
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>
@@ -82,12 +93,14 @@ import GoBack from "./GoBack.vue";
 import CodeView from "./CodeView.vue";
 import mixins from "../mixins.js";
 import { store } from "../store.js";
+import moment from "moment";
+import axios from "axios";
 
 export default {
   mixins: [mixins],
   components: {
-    GoBack: GoBack,
-    CodeView: CodeView
+    GoBack,
+    CodeView,
   },
   data() {
     return {
@@ -99,7 +112,7 @@ export default {
       time: moment().format("HH:mm:ss"),
       data: null,
       loading: true,
-      coordinates: "equatorial"
+      coordinates: "equatorial",
     };
   },
   methods: {
@@ -114,26 +127,25 @@ export default {
         elevation: this.elevation,
         from_date: moment(this.fromDate).format("YYYY-MM-DD"),
         to_date: moment(this.toDate).format("YYYY-MM-DD"),
-        time: moment(this.time, "HH:mm:ss").format("HH:mm:ss")
+        time: moment(this.time, "HH:mm:ss").format("HH:mm:ss"),
       };
 
       const headers = {
         "X-Requested-With": "XMLHttpRequest",
-        Authorization: `Basic ${btoa(`${store.appId}:${store.appSecret}`)}`
+        Authorization: `Basic ${btoa(`${store.appId}:${store.appSecret}`)}`,
       };
 
       this.setSnippetData("GET", url, params, headers);
 
-      axios.get(url, { params, headers }).then(response => {
+      axios.get(url, { params, headers }).then((response) => {
         this.data = response.data.data;
         store.response = JSON.stringify(response.data, null, 2);
-
         this.loading = false;
       });
-    }
+    },
   },
   mounted() {
     this.getData();
-  }
+  },
 };
 </script>

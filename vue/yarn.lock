@@ -2246,11 +2246,11 @@ __metadata:
   linkType: hard
 
 "baseline-browser-mapping@npm:^2.9.0":
-  version: 2.9.4
-  resolution: "baseline-browser-mapping@npm:2.9.4"
+  version: 2.9.7
+  resolution: "baseline-browser-mapping@npm:2.9.7"
   bin:
     baseline-browser-mapping: dist/cli.js
-  checksum: 10c0/5f33f2505130a234d70b332e3dbedf79655fa2be8287c4f4ea2dd0caca9e1c0c2598d8f5c3798e632382404a414de2b47710ec06b6741deb5e1236eb0b62803b
+  checksum: 10c0/500af82926d71d23fab20bcf821eb27deeaad45d1a01bd33d2dea7aab6114149068fa0d42bb9c5c18657e996b6e8063b84612c8fb8ac8ba6c6c6028fa4930ed1
   languageName: node
   linkType: hard
 
@@ -2527,9 +2527,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001759":
-  version: 1.0.30001759
-  resolution: "caniuse-lite@npm:1.0.30001759"
-  checksum: 10c0/b0f415960ba34995cda18e0d25c4e602f6917b9179290a76bdd0311423505b78cc93e558a90c98a22a1cc6b1781ab720ef6beea24ec7e29a1c1164ca72eac3a2
+  version: 1.0.30001760
+  resolution: "caniuse-lite@npm:1.0.30001760"
+  checksum: 10c0/cee26dff5c5b15ba073ab230200e43c0d4e88dc3bac0afe0c9ab963df70aaa876c3e513dde42a027f317136bf6e274818d77b073708b74c5807dfad33c029d3c
   languageName: node
   linkType: hard
 
@@ -3121,9 +3121,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.5.263":
-  version: 1.5.266
-  resolution: "electron-to-chromium@npm:1.5.266"
-  checksum: 10c0/74ada92ada1ace76ec5b7da8a9cc2d7f03db122a64ac8e12ae30eba3e358ffec443c0c5265bc6edcdeebfa73f449b21c361080c064eb1eec437db2d71fc03248
+  version: 1.5.267
+  resolution: "electron-to-chromium@npm:1.5.267"
+  checksum: 10c0/0732bdb891b657f2e43266a3db8cf86fff6cecdcc8d693a92beff214e136cb5c2ee7dc5945ed75fa1db16e16bad0c38695527a020d15f39e79084e0b2e447621
   languageName: node
   linkType: hard
 
@@ -3176,12 +3176,12 @@ __metadata:
   linkType: hard
 
 "enhanced-resolve@npm:^5.17.3":
-  version: 5.18.3
-  resolution: "enhanced-resolve@npm:5.18.3"
+  version: 5.18.4
+  resolution: "enhanced-resolve@npm:5.18.4"
   dependencies:
     graceful-fs: "npm:^4.2.4"
     tapable: "npm:^2.2.0"
-  checksum: 10c0/d413c23c2d494e4c1c9c9ac7d60b812083dc6d446699ed495e69c920988af0a3c66bf3f8d0e7a45cb1686c2d4c1df9f4e7352d973f5b56fe63d8d711dd0ccc54
+  checksum: 10c0/8f6d42c8a0787a746c493e724c9de5d091cfe8e3f871f2464e2f78a6c55fa1a3aaba495334f923c8ea3ac23e1472491f79feef6fc0fb46a75169cb447ffbe2dc
   languageName: node
   linkType: hard
 
@@ -6894,8 +6894,8 @@ __metadata:
   linkType: hard
 
 "terser-webpack-plugin@npm:^5.3.11":
-  version: 5.3.15
-  resolution: "terser-webpack-plugin@npm:5.3.15"
+  version: 5.3.16
+  resolution: "terser-webpack-plugin@npm:5.3.16"
   dependencies:
     "@jridgewell/trace-mapping": "npm:^0.3.25"
     jest-worker: "npm:^27.4.5"
@@ -6911,7 +6911,7 @@ __metadata:
       optional: true
     uglify-js:
       optional: true
-  checksum: 10c0/e36493869e22b3d76aa9e8ae75802efc5f07461eec819823d5ce78c79f73de5c8c50b6da1e9674274e53fb4e60c09deacc83e9e9c74bce700b6fba74ecbaae7a
+  checksum: 10c0/39e37c5b3015c1a5354a3633f77235677bfa06eac2608ce26d258b1d1a74070a99910319a6f2f2c437eb61dc321f66434febe01d78e73fa96b4d4393b813f4cf
   languageName: node
   linkType: hard
 

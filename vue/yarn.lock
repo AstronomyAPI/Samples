@@ -3869,14 +3869,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"form-data@npm:4.0.0":
-  version: 4.0.0
-  resolution: "form-data@npm:4.0.0"
+"form-data@npm:4.0.4":
+  version: 4.0.4
+  resolution: "form-data@npm:4.0.4"
   dependencies:
     asynckit: "npm:^0.4.0"
     combined-stream: "npm:^1.0.8"
+    es-set-tostringtag: "npm:^2.1.0"
+    hasown: "npm:^2.0.2"
     mime-types: "npm:^2.1.12"
-  checksum: 10c0/cb6f3ac49180be03ff07ba3ff125f9eba2ff0b277fb33c7fc47569fc5e616882c5b1c69b9904c4c4187e97dd0419dd03b134174756f296dec62041e6527e2c6e
+  checksum: 10c0/373525a9a034b9d57073e55eab79e501a714ffac02e7a9b01be1c820780652b16e4101819785e1e18f8d98f0aee866cc654d660a435c378e16a72f2e7cac9695
   languageName: node
   linkType: hard
 
@@ -4374,18 +4376,18 @@ __metadata:
   linkType: hard
 
 "httpsnippet@npm:^3.0.0":
-  version: 3.0.9
-  resolution: "httpsnippet@npm:3.0.9"
+  version: 3.0.10
+  resolution: "httpsnippet@npm:3.0.10"
   dependencies:
     chalk: "npm:^4.1.2"
     event-stream: "npm:4.0.1"
-    form-data: "npm:4.0.0"
+    form-data: "npm:4.0.4"
     har-validator-compiled: "npm:^1.0.0"
     stringify-object: "npm:3.3.0"
     yargs: "npm:^17.4.0"
   bin:
     httpsnippet: bin/httpsnippet
-  checksum: 10c0/46bfb4f28da98382931c6a7fcfe317179d113b36f34ced52cdcec85954839227a364a86dfc737961598c9d7340ee48869924063c58c7ebf03ccbb79ccdfe3883
+  checksum: 10c0/ab9c7caeaa65249917cff098a47366bfc265de4d546f20c82ae104083923a442331cd3d1d2644a4797d1f196dba5139a0ad3708891a4827fd87ba42972746f6b
   languageName: node
   linkType: hard
 

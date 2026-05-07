@@ -260,7 +260,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/parser@npm:^7.28.4, @babel/parser@npm:^7.28.5, @babel/parser@npm:^7.28.6, @babel/parser@npm:^7.29.0, @babel/parser@npm:^7.29.2":
+"@babel/parser@npm:^7.28.4, @babel/parser@npm:^7.28.5, @babel/parser@npm:^7.28.6, @babel/parser@npm:^7.29.0, @babel/parser@npm:^7.29.2, @babel/parser@npm:^7.29.3":
   version: 7.29.3
   resolution: "@babel/parser@npm:7.29.3"
   dependencies:
@@ -2032,6 +2032,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vue/compiler-core@npm:3.5.34":
+  version: 3.5.34
+  resolution: "@vue/compiler-core@npm:3.5.34"
+  dependencies:
+    "@babel/parser": "npm:^7.29.3"
+    "@vue/shared": "npm:3.5.34"
+    entities: "npm:^7.0.1"
+    estree-walker: "npm:^2.0.2"
+    source-map-js: "npm:^1.2.1"
+  checksum: 10c0/d70b2823d3519d772ed890e5a5609c0a2a37035255ef0264383f418c91f25a27b37735b96399e0142d61738bc246f3b8ad0275d9c5203c1b800dd89110709b00
+  languageName: node
+  linkType: hard
+
 "@vue/compiler-dom@npm:3.5.33":
   version: 3.5.33
   resolution: "@vue/compiler-dom@npm:3.5.33"
@@ -2042,7 +2055,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/compiler-sfc@npm:3.5.33, @vue/compiler-sfc@npm:^3.5.22":
+"@vue/compiler-dom@npm:3.5.34":
+  version: 3.5.34
+  resolution: "@vue/compiler-dom@npm:3.5.34"
+  dependencies:
+    "@vue/compiler-core": "npm:3.5.34"
+    "@vue/shared": "npm:3.5.34"
+  checksum: 10c0/ae2ab9d9f8ad09e96a450aa8f908cacbe599e1b51c7f580a76fb2302098b5a4150db2ad4e23893b0c1bc2751e3e5d5ce76730223c25918fb8418c91dd07fffb0
+  languageName: node
+  linkType: hard
+
+"@vue/compiler-sfc@npm:3.5.33":
   version: 3.5.33
   resolution: "@vue/compiler-sfc@npm:3.5.33"
   dependencies:
@@ -2059,6 +2082,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vue/compiler-sfc@npm:^3.5.22":
+  version: 3.5.34
+  resolution: "@vue/compiler-sfc@npm:3.5.34"
+  dependencies:
+    "@babel/parser": "npm:^7.29.3"
+    "@vue/compiler-core": "npm:3.5.34"
+    "@vue/compiler-dom": "npm:3.5.34"
+    "@vue/compiler-ssr": "npm:3.5.34"
+    "@vue/shared": "npm:3.5.34"
+    estree-walker: "npm:^2.0.2"
+    magic-string: "npm:^0.30.21"
+    postcss: "npm:^8.5.14"
+    source-map-js: "npm:^1.2.1"
+  checksum: 10c0/409e550fcea60c16b03570a0427a150f8dcf78d3bc1adeb5542fc27c913220d8b32f4f2c9aa4b9e4b6325154c24dcdfceefa111c4455de95d5ea2702edc405b3
+  languageName: node
+  linkType: hard
+
 "@vue/compiler-ssr@npm:3.5.33":
   version: 3.5.33
   resolution: "@vue/compiler-ssr@npm:3.5.33"
@@ -2066,6 +2106,16 @@ __metadata:
     "@vue/compiler-dom": "npm:3.5.33"
     "@vue/shared": "npm:3.5.33"
   checksum: 10c0/9a812813d51765777229a43b8e40166cdfd0f0e4e3af6d2dc8fdd7481ce4e1635cb450d407d4f709d707c8efb962053a454abc532222933116651eb3f5c2878e
+  languageName: node
+  linkType: hard
+
+"@vue/compiler-ssr@npm:3.5.34":
+  version: 3.5.34
+  resolution: "@vue/compiler-ssr@npm:3.5.34"
+  dependencies:
+    "@vue/compiler-dom": "npm:3.5.34"
+    "@vue/shared": "npm:3.5.34"
+  checksum: 10c0/2ea308fd11a5dfc9c6d3d67a04290f0e938ce299cd66fe58e6af176c9c9f46b7210ef3024a1968757bc4cf6d569dce6217ba2b37bd6f0bf49f5ee9732008d6c0
   languageName: node
   linkType: hard
 
@@ -2144,6 +2194,13 @@ __metadata:
   version: 3.5.33
   resolution: "@vue/shared@npm:3.5.33"
   checksum: 10c0/c96ec56cf1ff246907ed734f7e61f81e96fccec9944d77ae79421d9d1548ea5be63694e951968b527bdd1dd2c6ab98a05229ee9ae252893051f4802c95c1d3f2
+  languageName: node
+  linkType: hard
+
+"@vue/shared@npm:3.5.34":
+  version: 3.5.34
+  resolution: "@vue/shared@npm:3.5.34"
+  checksum: 10c0/9d181586e32a96214783bc0feb5d7cf2b61bca7e7b965c805b4355a9edfd60de570735536f94b4b8ea2c2c13587eb406b97066ade433752bc1f24e4cba3d8b2c
   languageName: node
   linkType: hard
 
@@ -5423,6 +5480,17 @@ __metadata:
     picocolors: "npm:^1.1.1"
     source-map-js: "npm:^1.2.1"
   checksum: 10c0/3aa7c8cbdfbfd99b34406a433cef56d164dd135fc9cb9e63d487cc363291f877a55ec7b8ff6ec15348c17c2d98a43be46bfad671e6340403041a3e79f70c2f2f
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.5.14":
+  version: 8.5.14
+  resolution: "postcss@npm:8.5.14"
+  dependencies:
+    nanoid: "npm:^3.3.11"
+    picocolors: "npm:^1.1.1"
+    source-map-js: "npm:^1.2.1"
+  checksum: 10c0/48138207cf5ef5581be1bfe2cb65ccfe0ac75e43888ba045afc8ed6043d7b56aeb3b9a9fe5b353ff554be943cd0cc15d826ccb991525159175971e5ee8ab0237
   languageName: node
   linkType: hard
 

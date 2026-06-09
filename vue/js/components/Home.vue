@@ -53,8 +53,7 @@
 
 <script>
 import { store } from "../store.js";
-import axios from "axios";
-import { getAuthHeaders } from "../utils/api.js";
+import { verifyCredentials } from "../utils/credentials.js";
 
 export default {
   data() {
@@ -76,9 +75,7 @@ export default {
       this.status = "Checking Credentials...";
 
       try {
-        await axios.get(`${store.apiEndpoint}/api/v2/bodies`, {
-          headers: getAuthHeaders(),
-        });
+        await verifyCredentials(store.apiEndpoint, store.appId, store.appSecret);
 
         this.status = "Credentials valid";
         this.messageClass = "success";

@@ -84,7 +84,10 @@ export default {
         this.messageClass = "success";
         store.credentialsValid = true;
       } catch (error) {
-        this.status = "Credential validation failed";
+        this.status =
+          error?.response?.status === 401
+            ? "Credential validation failed"
+            : "Could not validate credentials";
         this.messageClass = "error";
         store.credentialsValid = false;
       }

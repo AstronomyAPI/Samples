@@ -68,6 +68,7 @@ import CodeView from "./CodeView.vue";
 import mixins from "../mixins.js";
 import { store } from "../store.js";
 import axios from "axios";
+import { getAuthHeaders, setFormattedResponse } from "../utils/api.js";
 
 export default {
   mixins: [mixins],
@@ -98,16 +99,13 @@ export default {
         match_type: this.match_type,
       };
 
-      const headers = {
-        "X-Requested-With": "XMLHttpRequest",
-        Authorization: `Basic ${btoa(`${store.appId}:${store.appSecret}`)}`,
-      };
+      const headers = getAuthHeaders();
 
       this.setSnippetData("GET", url, params, headers);
 
       axios.get(url, { params, headers }).then((response) => {
         this.data = response.data.data;
-        store.response = JSON.stringify(response.data, null, 2);
+        setFormattedResponse(response.data);
         this.loading = false;
       });
     },

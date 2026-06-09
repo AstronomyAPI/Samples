@@ -53,7 +53,7 @@
 
 <script>
 import { store } from "../store.js";
-import axios from "axios";
+import { verifyCredentials } from "../utils/credentials.js";
 
 export default {
   data() {
@@ -64,32 +64,30 @@ export default {
     };
   },
   methods: {
-    validateCredentials() {
+    async validateCredentials() {
       if (!store.appId || !store.appSecret) {
+        this.status = "";
+        this.messageClass = "";
+        store.credentialsValid = false;
         return;
       }
 
       this.status = "Checking Credentials...";
-      axios
-        .get(`${store.apiEndpoint}/api/v2/bodies`, {
-          headers: {
-            "X-Requested-With": "XMLHttpRequest",
-            Authorization: `Basic ${btoa(`${store.appId}:${store.appSecret}`)}`,
-          },
-        })
-        .then((response) => {
-          console.log(response);
 
-          this.status = "Credentials valid";
-          this.messageClass = "success";
-          this.store.credentialsValid = true;
-        })
-        .catch((e) => {
-          console.log(e);
+      try {
+        await verifyCredentials(store.apiEndpoint, store.appId, store.appSecret);
 
-          this.status = "Credential validation failed";
-          this.messageClass = "error";
-        });
+        this.status = "Credentials valid";
+        this.messageClass = "success";
+        store.credentialsValid = true;
+      } catch (error) {
+        this.status =
+          error?.response?.status === 401
+            ? "Credential validation failed"
+            : "Could not validate credentials";
+        this.messageClass = "error";
+        store.credentialsValid = false;
+      }
     },
   },
 };

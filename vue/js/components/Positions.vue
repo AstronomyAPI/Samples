@@ -95,6 +95,7 @@ import mixins from "../mixins.js";
 import { store } from "../store.js";
 import moment from "moment";
 import axios from "axios";
+import { getAuthHeaders, setFormattedResponse } from "../utils/api.js";
 
 export default {
   mixins: [mixins],
@@ -130,16 +131,13 @@ export default {
         time: moment(this.time, "HH:mm:ss").format("HH:mm:ss"),
       };
 
-      const headers = {
-        "X-Requested-With": "XMLHttpRequest",
-        Authorization: `Basic ${btoa(`${store.appId}:${store.appSecret}`)}`,
-      };
+      const headers = getAuthHeaders();
 
       this.setSnippetData("GET", url, params, headers);
 
       axios.get(url, { params, headers }).then((response) => {
         this.data = response.data.data;
-        store.response = JSON.stringify(response.data, null, 2);
+        setFormattedResponse(response.data);
         this.loading = false;
       });
     },

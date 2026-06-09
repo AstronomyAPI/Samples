@@ -69,7 +69,7 @@ export default {
       if (!store.appId || !store.appSecret) {
         this.status = "";
         this.messageClass = "";
-        this.store.credentialsValid = false;
+        store.credentialsValid = false;
         return;
       }
 
@@ -82,11 +82,11 @@ export default {
 
         this.status = "Credentials valid";
         this.messageClass = "success";
-        this.store.credentialsValid = true;
+        store.credentialsValid = true;
       } catch (error) {
         this.status = "Credential validation failed";
         this.messageClass = "error";
-        this.store.credentialsValid = false;
+        store.credentialsValid = false;
       }
     },
   },

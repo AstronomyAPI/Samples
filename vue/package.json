@@ -6,7 +6,8 @@
   "scripts": {
     "watch": "NODE_OPTIONS=--openssl-legacy-provider node_modules/.bin/webpack-dev-server",
     "build": "NODE_OPTIONS=--openssl-legacy-provider webpack",
-    "format": "npx prettier --write ./js/**/*"
+    "format": "npx prettier --write ./js/**/*",
+    "test": "vitest run"
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +20,7 @@
     "buffer": "^6.0.3",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^14.0.0",
+    "crypto-browserify": "^3.12.1",
     "css-loader": "^7.1.2",
     "html-loader": "^5.1.0",
     "html-webpack-plugin": "^5.6.4",
@@ -38,6 +40,7 @@
     "vue-template-compiler": "^2.6.8",
     "vue-ts-loader": "0.0.3",
     "vue-typescript-import-dts": "^4.0.0",
+    "vitest": "^4.1.0",
     "webpack": "^5.0.0",
     "webpack-cli": "^7.0.0",
     "webpack-dev-server": "^5.0.0"

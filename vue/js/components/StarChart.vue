@@ -59,6 +59,7 @@ import mixins from "../mixins.js";
 import { store } from "../store.js";
 import axios from "axios";
 import moment from "moment";
+import { getAuthHeaders, setFormattedResponse } from "../utils/api.js";
 
 export default {
   mixins: [mixins],
@@ -215,16 +216,13 @@ export default {
         },
       };
 
-      const headers = {
-        "X-Requested-With": "XMLHttpRequest",
-        Authorization: `Basic ${btoa(`${store.appId}:${store.appSecret}`)}`,
-      };
+      const headers = getAuthHeaders();
 
       this.setSnippetData("POST", url, params, headers);
 
       axios.post(url, params, { headers }).then((response) => {
         this.imageUrl = response.data.data.imageUrl;
-        store.response = JSON.stringify(response.data, null, 2);
+        setFormattedResponse(response.data);
 
         this.loading = false;
       });

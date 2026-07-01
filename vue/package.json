@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.28.4",
+    "@babel/core": "^8.0.0",
     "@babel/preset-env": "^7.28.3",
     "@types/node": "^25.0.0",
     "@vue/compiler-sfc": "^3.5.22",

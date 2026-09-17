@@ -2018,21 +2018,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*":
+"@types/node@npm:*, @types/node@npm:^26.0.0":
   version: 26.6.1
   resolution: "@types/node@npm:26.6.1"
   dependencies:
     undici-types: "npm:~8.9.0"
   checksum: 10c0/c90d3db40e7c9c92f0854ecdcaabd9c1923b7e2a43cf2c97cf147a5aba7e18a1c80034088edfb1bb2153ceffdd87be7ce0a256b80ec7cd92e619c564133ae5fe
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:^25.0.0":
-  version: 25.9.7
-  resolution: "@types/node@npm:25.9.7"
-  dependencies:
-    undici-types: "npm:>=7.24.0 <7.24.7"
-  checksum: 10c0/455891a50ac28558eeccdf7439b887bb8923aa11c2c4efd900d8f8b4e3c1d204905290abd72f80425d1e39793c404b45ac70814c4831e12034cf0ce503ebe981
   languageName: node
   linkType: hard
 
@@ -7259,13 +7250,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici-types@npm:>=7.24.0 <7.24.7":
-  version: 7.24.6
-  resolution: "undici-types@npm:7.24.6"
-  checksum: 10c0/d9cd8befb643ac904615c280a095ba4240531f6bb4a5e75a22a7483630ca8d3f1016d2ab6ace6ceda1f63b3a2db2fe037fafe121d6917a0187573aa548ff78ca
-  languageName: node
-  linkType: hard
-
 "undici-types@npm:~8.9.0":
   version: 8.9.0
   resolution: "undici-types@npm:8.9.0"
@@ -7637,7 +7621,7 @@ __metadata:
   dependencies:
     "@babel/core": "npm:^7.28.4"
     "@babel/preset-env": "npm:^7.28.3"
-    "@types/node": "npm:^25.0.0"
+    "@types/node": "npm:^26.0.0"
     "@vue/compiler-sfc": "npm:^3.5.22"
     axios: "npm:^1.12.2"
     babel-loader: "npm:^10.0.0"

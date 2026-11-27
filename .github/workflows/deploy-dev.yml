@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v7
         with:
-          node-version: 24
+          node-version: 26
       - run: corepack enable
       - uses: actions/checkout@v7
       - uses: ./.github/actions/build
